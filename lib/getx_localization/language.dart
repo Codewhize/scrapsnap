@@ -13,6 +13,8 @@ class Language extends Translations {
           'entername&mobile': 'Enter Name & Mobile Number',
           'signinwithnumber': "Sign In With Name & Mobile Number",
           'entername': 'Enter Name',
+          'terms&conditionask': 'By continuing, you agree to our',
+          'terms&condition': ' Terms & Conditions',
         }
       };
 }

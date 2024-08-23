@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:scrapsnap/res/appColors/app_colors.dart';
+import 'package:scrapsnap/view/widgets/buttons/elevat_button_widget.dart';
+import 'package:scrapsnap/view/widgets/buttons/text_button_widget.dart';
+import 'package:scrapsnap/view/widgets/countryCode/country_code.dart';
 import 'package:scrapsnap/view/widgets/textformfield/enter_name_text_field.dart';
+import 'package:scrapsnap/view/widgets/textformfield/mobile_number_field.dart';
+import 'package:scrapsnap/view_model/controller/mobileNumberController/mobile_number_controller.dart';
 
 class MobileNumberSigninView extends StatefulWidget {
   const MobileNumberSigninView({super.key});
@@ -13,6 +19,7 @@ class MobileNumberSigninView extends StatefulWidget {
 }
 
 class _MobileNumberSigninViewState extends State<MobileNumberSigninView> {
+  final mobileNumberController = Get.put(MobileNumberController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,9 +55,48 @@ class _MobileNumberSigninViewState extends State<MobileNumberSigninView> {
               ),
               const EnterNameTextField(),
               const SizedBox(
-                height: 20,
+                height: 24,
               ),
-              const MobileNumberSigninView()
+              const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CountryCode(),
+                  MobileNumberField(),
+                ],
+              ),
+              ElevatButtonWidget(
+                text: "Verify Using OTP",
+                onPressed: () {},
+                width: 333,
+                height: 47,
+                topMargin: 24,
+              ),
+              const SizedBox(
+                height: 37,
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    "terms&conditionask".tr,
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.mobileSignInSubtitleTextColor),
+                  ),
+                  InkWell(
+                      child: Text(
+                    "terms&condition".tr,
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: AppColors.elevatedButtonBackgroundColor,
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.underline,
+                        decorationColor:
+                            AppColors.elevatedButtonBackgroundColor),
+                  ))
+                ],
+              )
             ],
           ),
         ),

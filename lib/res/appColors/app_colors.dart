@@ -28,4 +28,7 @@ class AppColors {
       const Color.fromRGBO(118, 118, 118, 1);
   static Color nameFieldColor = const Color.fromRGBO(91, 193, 152, 1);
   static Color namefieldHintColor = const Color.fromRGBO(255, 255, 255, 1);
+  static Color mobilenumberFieldColor = const Color.fromRGBO(242, 242, 242, 1);
+  static Color mobilenumberFieldTextColor =
+      const Color.fromRGBO(203, 203, 203, 1);
 }

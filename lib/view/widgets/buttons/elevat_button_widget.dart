@@ -8,6 +8,7 @@ class ElevatButtonWidget extends StatelessWidget {
   final double height;
   final int currentPage;
   final double bottomMargin;
+  final double topMargin;
   const ElevatButtonWidget(
       {super.key,
       required this.text,
@@ -15,7 +16,8 @@ class ElevatButtonWidget extends StatelessWidget {
       this.currentPage = 0,
       this.width = 98,
       this.height = 43,
-      this.bottomMargin = 10});
+      this.bottomMargin = 0,
+      this.topMargin = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class ElevatButtonWidget extends StatelessWidget {
       borderRadius: BorderRadius.circular(500),
       onTap: onPressed,
       child: Container(
-        margin: EdgeInsets.only(bottom: bottomMargin),
+        margin: EdgeInsets.only(bottom: bottomMargin, top: topMargin),
         alignment: Alignment.center,
         width: width,
         height: height,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scrapsnap/res/appColors/app_colors.dart';
 import 'package:scrapsnap/res/routes/routes_name.dart';
 import 'package:scrapsnap/view/onBoadingView/onboading_page.dart';
 import 'package:scrapsnap/view/viewModel/controller/onboading_controller.dart';
@@ -102,6 +103,7 @@ class _OnBoadingViewState extends State<OnBoadingView> {
               child: onBoadingController.currentPage.value !=
                       onBoadingContent.length - 1
                   ? TextButtonWidget(
+                      color: AppColors.textButtonTextColor,
                       text: "Skip",
                       onPress: () {
                         pageController.jumpToPage(
