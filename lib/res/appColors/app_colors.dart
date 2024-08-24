@@ -31,4 +31,9 @@ class AppColors {
   static Color mobilenumberFieldColor = const Color.fromRGBO(242, 242, 242, 1);
   static Color mobilenumberFieldTextColor =
       const Color.fromRGBO(203, 203, 203, 1);
+  static Color errorBorderColor = Colors.red;
+
+  // otpView color
+
+  static Color otpTextColor = const Color.fromRGBO(55, 55, 55, 1);
 }

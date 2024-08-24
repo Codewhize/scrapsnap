@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:scrapsnap/res/routes/routes_name.dart';
 import 'package:scrapsnap/view/mobileNumberSignInView/mobile_number_signin_view.dart';
+import 'package:scrapsnap/view/mobileNumberSignInView/otp_view.dart';
 import 'package:scrapsnap/view/onBoadingView/onBoading_view.dart';
 import 'package:scrapsnap/view/selectLanguageView/select_language_view.dart';
 import 'package:scrapsnap/view/splashView/splash_view.dart';
@@ -22,6 +23,10 @@ class Routes {
     GetPage(
       name: RoutesName.mobileSignInView,
       page: () => const MobileNumberSigninView(),
+    ),
+    GetPage(
+      name: RoutesName.otpView,
+      page: () => const OtpView(),
     ),
   ];
 }

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scrapsnap/getx_localization/language.dart';
 import 'package:scrapsnap/res/routes/routes.dart';
-import 'package:scrapsnap/view/mobileNumberSignInView/mobile_number_signin_view.dart';
-import 'package:scrapsnap/view/onBoadingView/onBoading_view.dart';
-import 'package:scrapsnap/view/selectLanguageView/select_language_view.dart';
+import 'package:scrapsnap/view/mobileNumberSignInView/otp_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MobileNumberSigninView(),
+      home: const OtpView(),
       getPages: Routes.appRoutes,
     );
   }

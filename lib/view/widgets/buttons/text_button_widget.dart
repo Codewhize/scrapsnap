@@ -1,7 +1,5 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:scrapsnap/res/appColors/app_colors.dart';
 
 class TextButtonWidget extends StatelessWidget {
   final String text;
@@ -26,11 +24,12 @@ class TextButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       margin: EdgeInsets.only(top: topMargin),
       width: width,
       height: height,
-      child: TextButton(
-        onPressed: onPress,
+      child: GestureDetector(
+        onTap: onPress,
         child: Text(
           text,
           style: TextStyle(

@@ -2,14 +2,14 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scrapsnap/res/appColors/app_colors.dart';
-import 'package:scrapsnap/view_model/controller/mobileNumberController/mobile_number_controller.dart';
+import 'package:scrapsnap/view_model/controller/mobileNumberController/mobile_number_name_controller.dart';
 
 class CountryCode extends StatelessWidget {
   const CountryCode({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final mobileNumberController = Get.put(MobileNumberController());
+    final mobileNumberController = Get.put(MobileNumberNameController());
     return Container(
       width: 74.27,
       height: 50.0,

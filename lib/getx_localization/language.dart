@@ -15,6 +15,10 @@ class Language extends Translations {
           'entername': 'Enter Name',
           'terms&conditionask': 'By continuing, you agree to our',
           'terms&condition': ' Terms & Conditions',
+          'otpsentis': "OTP is sent on ",
+          'pleaseinput': ' Please input!',
+          'mobilenumberwrong': 'Mobile number entered wrong?',
+          'enteragain': ' Enter Again'
         }
       };
 }

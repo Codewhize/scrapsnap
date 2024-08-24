@@ -21,8 +21,8 @@ class ElevatButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(500),
+    return GestureDetector(
+    
       onTap: onPressed,
       child: Container(
         margin: EdgeInsets.only(bottom: bottomMargin, top: topMargin),
