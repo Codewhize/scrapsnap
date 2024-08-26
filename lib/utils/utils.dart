@@ -12,7 +12,11 @@ class Utils {
     );
   }
 
-  static void snackbar(String title, String message) {
-    Get.snackbar(title, message, duration: const Duration(seconds: 3));
+  static void snackbar(String title, String message, {int duration = 3}) {
+    Get.snackbar(
+      title,
+      message,
+      duration: Duration(seconds: duration),
+    );
   }
 }

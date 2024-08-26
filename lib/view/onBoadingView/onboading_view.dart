@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:scrapsnap/res/appColors/app_colors.dart';
 import 'package:scrapsnap/res/routes/routes_name.dart';
 import 'package:scrapsnap/view/onBoadingView/onboading_page.dart';
-import 'package:scrapsnap/view/viewModel/controller/onboading_controller.dart';
-import 'package:scrapsnap/view/widgets/buttons/elevat_button_widget.dart';
-import 'package:scrapsnap/view/widgets/buttons/text_button_widget.dart';
+import 'package:scrapsnap/view_model/controller/onboading_controller.dart';
+import 'package:scrapsnap/widgets/buttons/elevat_button_widget.dart';
+import 'package:scrapsnap/widgets/buttons/text_button_widget.dart';
+
 
 class OnBoadingView extends StatefulWidget {
   const OnBoadingView({super.key});

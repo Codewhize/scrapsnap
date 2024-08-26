@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:scrapsnap/res/appColors/app_colors.dart';
-import 'package:scrapsnap/view/viewModel/controller/onboading_controller.dart';
+import 'package:scrapsnap/view_model/controller/onboading_controller.dart';
 
 class OnboadingPage extends StatelessWidget {
   final String image;

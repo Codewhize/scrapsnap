@@ -10,7 +10,7 @@ class OtpController extends GetxController {
   final otpTextController = TextEditingController().obs;
 
   static String markMobileNumber(String mobileNumber) {
-    mobileNumber = '1234567890';
+    // mobileNumber = '1234567890';
     String firstPart = '';
     String lastPart = '';
     if (mobileNumber.length != 10) {
@@ -32,5 +32,15 @@ class OtpController extends GetxController {
           border: Border.all(color: AppColors.appBackgroundColor),
           color: AppColors.appBackgroundColor),
     );
+  }
+
+  void otpValidation() {
+    String mobileNumber = MobileNumberNameController.randomOtp.toString();
+    String otp = otpTextController.value.text;
+    if (mobileNumber == otp) {
+      Utils.snackbar("success", "OTP is valid");
+    } else {
+      Utils.snackbar("Error", "Please enter valid OTP");
+    }
   }
 }

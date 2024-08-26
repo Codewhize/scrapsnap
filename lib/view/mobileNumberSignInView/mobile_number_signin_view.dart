@@ -3,12 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:scrapsnap/res/appColors/app_colors.dart';
 import 'package:scrapsnap/res/routes/routes_name.dart';
-import 'package:scrapsnap/view/widgets/buttons/elevat_button_widget.dart';
-import 'package:scrapsnap/view/widgets/countryCode/country_code.dart';
-import 'package:scrapsnap/view/widgets/textformfield/enter_name_text_field.dart';
-import 'package:scrapsnap/view/widgets/textformfield/mobile_number_field.dart';
 import 'package:scrapsnap/view_model/controller/mobileNumberController/mobile_number_name_controller.dart';
 import 'package:scrapsnap/view_model/controller/otpController/otp_view_controller.dart';
+import 'package:scrapsnap/widgets/buttons/elevat_button_widget.dart';
+import 'package:scrapsnap/widgets/countryCode/country_code.dart';
+import 'package:scrapsnap/widgets/mobileNameTextField/enter_name_text_field.dart';
+import 'package:scrapsnap/widgets/mobileNameTextField/mobile_number_field.dart';
 
 class MobileNumberSigninView extends StatefulWidget {
   const MobileNumberSigninView({super.key});
@@ -69,7 +69,16 @@ class _MobileNumberSigninViewState extends State<MobileNumberSigninView> {
               ElevatButtonWidget(
                 text: "Verify Using OTP",
                 onPressed: () {
-                  Get.toNamed(RoutesName.otpView);
+                  if (mobileNumberNameController
+                          .mobileNumberController.value.text.isNotEmpty &&
+                      mobileNumberNameController
+                          .nameController.value.text.isNotEmpty) {
+                    Get.toNamed(RoutesName.otpView);
+                    mobileNumberNameController.randomeOTP();
+                  } else {
+                    Get.snackbar(
+                        "Error", "Please enter Name and mobile number");
+                  }
                 },
                 width: 333,
                 height: 47,

@@ -18,7 +18,9 @@ class Language extends Translations {
           'otpsentis': "OTP is sent on ",
           'pleaseinput': ' Please input!',
           'mobilenumberwrong': 'Mobile number entered wrong?',
-          'enteragain': ' Enter Again'
+          'enteragain': ' Enter Again',
+          'address': 'Address',
+          'selectstate': 'Select & Enter State'
         }
       };
 }

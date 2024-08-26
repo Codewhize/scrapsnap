@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:scrapsnap/res/appColors/app_colors.dart';
-import 'package:scrapsnap/view/widgets/bottomSheet/show_bottom_sheet.dart';
+import 'package:scrapsnap/widgets/bottomSheet/show_bottom_sheet.dart';
 
 class SelectLanguageView extends StatefulWidget {
   const SelectLanguageView({super.key});

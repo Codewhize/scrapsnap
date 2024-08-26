@@ -5,6 +5,9 @@ import 'package:scrapsnap/view/mobileNumberSignInView/otp_view.dart';
 import 'package:scrapsnap/view/onBoadingView/onBoading_view.dart';
 import 'package:scrapsnap/view/selectLanguageView/select_language_view.dart';
 import 'package:scrapsnap/view/splashView/splash_view.dart';
+import 'package:scrapsnap/view/temp.dart';
+
+import '../../view/addressView/address_view.dart';
 
 class Routes {
   static List<GetPage> appRoutes = [
@@ -27,6 +30,14 @@ class Routes {
     GetPage(
       name: RoutesName.otpView,
       page: () => const OtpView(),
+    ),
+    GetPage(
+      name: RoutesName.addressView,
+      page: () => const AddressView(),
+    ),
+    GetPage(
+      name: RoutesName.temp,
+      page: () => StateCitySelectionPage(),
     ),
   ];
 }
