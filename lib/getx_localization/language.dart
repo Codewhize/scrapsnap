@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class Language extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
-        'English': {
+        'en': {
           'onboading1TitleText': 'Select Scrap items for Selling',
           'onboadingSubtitleText':
               'We are collect scrap from wide list\n of items like Newspaper, Plastic,\nIron,Electronic machine, etc.',
@@ -13,6 +13,7 @@ class Language extends Translations {
           'entername&mobile': 'Enter Name & Mobile Number',
           'signinwithnumber': "Sign In With Name & Mobile Number",
           'entername': 'Enter Name',
+          'entermobile': 'Enter Mobile Number',
           'terms&conditionask': 'By continuing, you agree to our',
           'terms&condition': ' Terms & Conditions',
           'otpsentis': "OTP is sent on ",
@@ -20,7 +21,54 @@ class Language extends Translations {
           'mobilenumberwrong': 'Mobile number entered wrong?',
           'enteragain': ' Enter Again',
           'address': 'Address',
-          'selectstate': 'Select & Enter State'
-        }
+          'selectstate': 'Select or Enter State*',
+          'selectcity': "Enter or Select City*",
+          'selectarea': "Enter or Select Area*",
+          'selectpincode': "Enter Pincode*",
+          'landmark': 'Landmark',
+          'address_hint': 'Address*',
+          // 'home': 'Home',
+          // 'office': 'Office',
+          // 'shop': 'Shop',
+          // 'malloutlet': 'Mall/Outlet'
+        },
+        "gu": {
+          'entername&mobile': 'નામ અને મોબાઈલ નંબર દાખલ કરો',
+          'signinwithnumber': "નામ અને મોબાઇલ નંબર સાથે સાઇન ઇન કરો",
+          'entername': 'નામ દાખલ કરો',
+          'terms&conditionask': 'ચાલુ રાખીને, તમે અમારી સાથે સંમત થાઓ છો',
+          'terms&condition': ' નિયમો અને શરતો',
+          'otpsentis': "પર OTP મોકલવામાં આવે છે ",
+          'entermobile': 'મોબાઈલ નંબર દાખલ કરો',
+          'pleaseinput': ' કૃપા કરીને ઇનપુટ કરો!',
+          'mobilenumberwrong': 'મોબાઈલ નંબર ખોટો દાખલ કર્યો છે?',
+          'enteragain': ' ફરીથી દાખલ કરો',
+          'address': 'સરનામું',
+          'selectstate': 'રાજ્ય પસંદ કરો અથવા દાખલ કરો*',
+          'selectcity': "દાખલ કરો અથવા શહેર પસંદ કરો*",
+          'selectarea': "વિસ્તાર દાખલ કરો અથવા પસંદ કરો*",
+          'selectpincode': "પિનકોડ દાખલ કરો*",
+          'landmark': 'લેન્ડમાર્ક',
+          'address_hint': 'સરનામું*',
+        },
+        'hi': {
+          'entername&mobile': 'नाम और मोबाइल नंबर दर्ज करें',
+          'signinwithnumber': "नाम और मोबाइल नंबर से साइन इन करें",
+          'entername': 'नाम दर्ज करें',
+          'terms&conditionask': 'जारी रखकर, आप हमारी शर्तों से सहमत हैं',
+          'terms&condition': ' नियम एवं शर्तें',
+          'otpsentis': "OTP भेजा जाता है ",
+          'entermobile': 'मोबाइल नंबर दर्ज करें',
+          'pleaseinput': ' इनपुट करें!',
+          'mobilenumberwrong': 'मोबाइल नंबर ग़लत दर्ज किया गया?',
+          'enteragain': ' पुनः प्रवेश करें',
+          'address': 'पता',
+          'selectstate': 'राज्य चुनें या दर्ज करें*',
+          'selectcity': "शहर दर्ज करें या चुनें*",
+          'selectarea': "क्षेत्र दर्ज करें या चुनें*",
+          'selectpincode': "पिनकोड दर्ज करें*",
+          'landmark': 'सीमाचिह्न',
+          'address_hint': 'पता*',
+        },
       };
 }

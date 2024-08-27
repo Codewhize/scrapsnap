@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   //app
-  static Color appBackgroundColor = const Color.fromRGBO(91, 193, 152, 1);
+  static Color splashScreenBackColor = const Color.fromRGBO(91, 193, 152, 1);
+  static Color focusBorderColor = const Color.fromRGBO(91, 193, 152, 1);
+  static Color appBackColor = const Color.fromARGB(255, 255, 255, 255);
 
   //onboadingVIew
   static Color onBoadingTitleTextColor = const Color.fromRGBO(55, 55, 55, 1);
@@ -44,4 +46,8 @@ class AppColors {
   static Color addressTextFieldColor = const Color.fromRGBO(242, 242, 242, 1);
   static Color addressTextFieldHintColor =
       const Color.fromRGBO(203, 203, 203, 1);
+
+  static Color dropdownButtonColor = const Color.fromRGBO(0, 0, 0, 1);
+
+  static var appBackgroundColor;
 }

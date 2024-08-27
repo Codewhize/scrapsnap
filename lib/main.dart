@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:scrapsnap/getx_localization/language.dart';
 import 'package:scrapsnap/res/routes/routes.dart';
 import 'package:scrapsnap/view/addressView/address_view.dart';
+import 'package:scrapsnap/view/selectLanguageView/select_language_view.dart';
 import 'package:scrapsnap/view/splashView/splash_view.dart';
 import 'package:scrapsnap/view/temp.dart';
 
@@ -18,14 +19,14 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       translations: Language(),
-      locale: const Locale("English"),
-      fallbackLocale: const Locale("English"),
+      locale: const Locale("en"),
+      fallbackLocale: const Locale("en"),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  AddressView(),
+      home: const SplashView(),
       getPages: Routes.appRoutes,
     );
   }

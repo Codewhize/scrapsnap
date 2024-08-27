@@ -1,24 +1,39 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scrapsnap/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AddressViewContoller extends GetxController {
   final stateTextFieldController = TextEditingController().obs;
   final cityTextFieldController = TextEditingController().obs;
-  RxString selectCity = ''.obs;
-  RxString selectState = ''.obs;
+  final areaTextFieldController = TextEditingController().obs;
+  final pincodeTextFieldController = TextEditingController().obs;
+  final landmarkTextFieldController = TextEditingController().obs;
+  final addressTextFieldController = TextEditingController().obs;
   RxList<String> stateList = ["GUJARAT", "DELHI"].obs;
   RxList<String> cityList = <String>[].obs;
+  RxList<String> areaList = <String>[].obs;
+
+  final String counrtyKey = 'country';
 
   final RxMap<String, List<String>> cityMap = {
     "GUJARAT": ["AHMEDABAD", "SURAT"],
     "DELHI": ["DELHI", "NOIDA"],
   }.obs;
 
+  final RxMap<String, List<String>> areaMap = {
+    "AHMEDABAD": ["MANINAGAR", "BOPAL"],
+    "SURAT": ["KOSAD", "KATARGAM"],
+    "DELHI": ["KAROL BAGH", "LAJPAT NAGAR"],
+    "NOIDA": ["SECTION 15", "SECTION 18"],
+  }.obs;
+
   @override
   void onInit() {
     super.onInit();
-    loadSelectedStateCity();
+    loadStateData();
   }
 
   String capitalize(String s) {
@@ -26,90 +41,113 @@ class AddressViewContoller extends GetxController {
     return s.toUpperCase();
   }
 
-  loadSelectedStateCity() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? savedState = prefs.getString('state');
-    String? savedCity = prefs.getString('city');
+  Future<void> savedStateData(String stateName) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    stateName = capitalize(stateName);
+    if (stateName.isNotEmpty && !stateList.contains(stateName)) {
+      stateList.add(stateName);
+      String jsonCountry = jsonEncode(stateList);
+      await pref.setString(counrtyKey, jsonCountry);
+      stateList.refresh();
+    }
+  }
 
-    if (savedState != null && stateList.contains(savedState)) {
-      selectState.value = savedState;
-      stateTextFieldController.value.text = savedState;
-      loadCitiesForState(savedState);
+  Future<void> savedCityData(String cityNamed) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String stateName = stateTextFieldController.value.text.toUpperCase();
+    String cityName = capitalize(cityNamed);
 
-      if (savedCity != null && cityList.contains(savedCity)) {
-        selectCity.value = savedCity;
-        cityTextFieldController.value.text = savedCity;
+    if (cityMap.containsKey(stateName)) {
+      if (!cityMap[stateName]!.contains(cityName)) {
+        cityMap[stateName]!.add(cityName);
+        List<String>? cityData = cityMap[stateName];
+        await pref.setStringList(stateName, cityData!);
+
+        cityMap.refresh();
       }
-    }
-  }
-
-  void loadCitiesForState(String state) {
-    cityList.value = cityMap[state] ?? [];
-    selectCity.value = '';
-    cityTextFieldController.value.clear();
-  }
-
-  saveSelectedStateCity() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('state', selectState.value);
-    await prefs.setString('city', selectCity.value);
-  }
-
-  void onStateChanged(String? newState) {
-    if (newState != null) {
-      selectState.value = newState;
-      stateTextFieldController.value.text = newState;
-      loadCitiesForState(newState);
-    }
-  }
-
-  void onCityChanged(String? newCity) {
-    if (newCity != null) {
-      selectCity.value = newCity;
-      cityTextFieldController.value.text = newCity;
-    }
-  }
-
-  void submitSelection() async {
-    String enteredState = stateTextFieldController.value.text.trim();
-    String enteredCity = cityTextFieldController.value.text.trim();
-
-    // Capitalize state and city names
-    String upperCaseState = capitalize(enteredState);
-    String upperCaseCity = capitalize(enteredCity);
-
-    // Check and add new state if not in the list
-    if (upperCaseState.isNotEmpty && !stateList.contains(upperCaseState)) {
-      stateList.add(upperCaseState);
-    }
-
-    // Check if a state and city are selected or entered
-    if (selectState.isNotEmpty && upperCaseCity.isNotEmpty) {
-      if (!cityList.contains(upperCaseCity)) {
-        cityList.add(upperCaseCity);
-      }
-      selectCity.value = upperCaseCity;
-
-      // Save the selected state and city
-      await saveSelectedStateCity();
-
-      // Navigate to the next page
-      // Get.to(NextPage());
     } else {
-      Get.snackbar("Error", "Please select both a state and a city.",
-          snackPosition: SnackPosition.BOTTOM);
+      cityMap[stateName] = [cityName];
+      await pref.setStringList(stateName, cityMap[stateName]!);
+      cityMap.refresh();
     }
   }
 
-  Widget selectStateIconButton() {
-    return DropdownButton(
-      value: stateList,
-      items: stateList.map((String value) {
-        return DropdownMenuItem(child: Text(value));
-      }).toList(),
-      onChanged: (value) {
-        stateTextFieldController.value.text = value.toString();
-      },
-    );
+  Future<void> savedAreaData(String areaName) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String cityName = cityTextFieldController.value.text.toString();
+    areaName = capitalize(areaName);
+    cityName = capitalize(cityName);
+    if (areaMap.containsKey(cityName)) {
+      if (!areaMap[cityName]!.contains(areaName)) {
+        areaMap[cityName]!.add(areaName);
+        await pref.setStringList(cityName, areaMap[cityName]!);
+        areaMap.refresh();
+      }
+    } else {
+      areaMap[cityName] = [areaName];
+      await pref.setStringList(cityName, areaMap[cityName]!);
+      areaMap.refresh();
+    }
+  }
+
+  void onChangedState(value) {
+    stateTextFieldController.value.text = value.toString();
+    loadCityData(value.toString());
+  }
+
+  void onChangedCity(value) {
+    cityTextFieldController.value.text = value.toString();
+    loadAreaData(cityTextFieldController.value.text);
+  }
+
+  void onChangeArea(value) {
+    areaTextFieldController.value.text = value!;
+  }
+
+  void addressViewOnPressed() {
+    if (stateTextFieldController.value.text.isNotEmpty &&
+        cityTextFieldController.value.text.isNotEmpty &&
+        areaTextFieldController.value.text.isNotEmpty &&
+        pincodeTextFieldController.value.text.isNotEmpty &&
+        addressTextFieldController.value.text.isNotEmpty) {
+      savedStateData(stateTextFieldController.value.text);
+      savedCityData(cityTextFieldController.value.text.toString());
+      savedAreaData(areaTextFieldController.value.text.toString());
+    } else {
+      Utils.snackbar("Error", "Fill all details");
+    }
+  }
+
+  void loadCityData(String stateName) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    List<String>? cities = pref.getStringList(stateName);
+    if (cities != null) {
+      cityList.value = cities;
+    } else {
+      cityList.value = cityMap[stateName]!;
+    }
+  }
+
+  void loadStateData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String? jsonString = pref.getString(counrtyKey);
+    // pref.clear();
+
+    if (jsonString != null) {
+      List<dynamic> jsonList = jsonDecode(jsonString);
+
+      stateList.value = jsonList.cast<String>();
+    }
+  }
+
+  void loadAreaData(String cityName) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    List<String>? areas = pref.getStringList(cityName);
+    if (areas != null) {
+      areaList.value = areas.cast<String>();
+    } else {
+      areaList.value = areaMap[cityName]!;
+    }
   }
 }

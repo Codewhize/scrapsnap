@@ -37,7 +37,7 @@ class Routes {
     ),
     GetPage(
       name: RoutesName.temp,
-      page: () => StateCitySelectionPage(),
+      page: () => AddressTypeSelector(),
     ),
   ];
 }

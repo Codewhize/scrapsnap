@@ -25,22 +25,32 @@ class _AddressStateTextFieldState extends State<AddressStateTextField> {
         () => TextFormField(
           controller: addressViewController.stateTextFieldController.value,
           decoration: InputDecoration(
-            hintText: "Enter or Select State",
+            hintText: "selectstate".tr,
             hintStyle: TextStyle(color: AppColors.addressTextFieldHintColor),
-            suffixIcon: DropdownButton<String>(
-                icon: const Icon(Icons.arrow_drop_down),
-                items: addressViewController.stateList.map((String state) {
-                  return DropdownMenuItem<String>(
-                    value: state,
-                    child: Text(state),
-                  );
-                }).toList(),
-                onChanged: addressViewController.onStateChanged),
+            suffixIcon: DropdownButtonHideUnderline(
+              child: DropdownButton<String>(
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_outlined,
+                    size: 27,
+                    color: AppColors.dropdownButtonColor,
+                  ),
+                  items: addressViewController.stateList.map((String state) {
+                    return DropdownMenuItem<String>(
+                      value: state,
+                      child: Text(state),
+                    );
+                  }).toList(),
+                  onChanged: addressViewController.onChangedState),
+            ),
             fillColor: AppColors.addressTextFieldColor,
             filled: true,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(500),
               borderSide: BorderSide(color: AppColors.addressTextFieldColor),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(500),
+              borderSide: BorderSide(color: AppColors.splashScreenBackColor),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(500),

@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scrapsnap/res/appColors/app_colors.dart';
 import 'package:scrapsnap/res/routes/routes_name.dart';
+import 'package:scrapsnap/view_model/controller/selectLanguage/select_language_controller.dart';
 import 'package:scrapsnap/widgets/buttons/elevat_button_widget.dart';
 
 class ShowBottomSheet extends StatelessWidget {
-  final RxString selectedLanguage = 'English'.obs;
+  // final RxString selectedLanguage = 'English'.obs;
 
-  ShowBottomSheet({super.key});
+  const ShowBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final languages = ['English', 'Gujarat', 'Hindi'];
+    final languages = ['English', 'Gujarati', 'Hindi'];
+    final selectLanguageController = Get.put(SelectLanguageController());
 
     return Container(
       padding: const EdgeInsets.all(16.0),
@@ -27,7 +29,8 @@ class ShowBottomSheet extends StatelessWidget {
           Column(
             children: languages.map((language) {
               return Obx(() {
-                final bool isSelected = selectedLanguage.value == language;
+                final bool isSelected =
+                    selectLanguageController.selectedLanguage.value == language;
                 return RadioListTile<String>(
                   title: Text(
                     language,
@@ -39,9 +42,10 @@ class ShowBottomSheet extends StatelessWidget {
                         fontSize: 16),
                   ),
                   value: language,
-                  groupValue: selectedLanguage.value,
+                  groupValue: selectLanguageController.selectedLanguage.value,
                   onChanged: (value) {
-                    selectedLanguage.value = value!;
+                    selectLanguageController.selectedLanguage.value = value!;
+                    selectLanguageController.changeLanguage(value);
                   },
                   activeColor: AppColors.selectLanguageTextColor,
                 );

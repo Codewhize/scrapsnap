@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:scrapsnap/res/appColors/app_colors.dart';
+import 'package:scrapsnap/res/routes/routes_name.dart';
 import 'package:scrapsnap/utils/utils.dart';
 import 'package:scrapsnap/view_model/controller/mobileNumberController/mobile_number_name_controller.dart';
 
@@ -29,8 +30,8 @@ class OtpController extends GetxController {
       textStyle: const TextStyle(fontSize: 20, color: Colors.black),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(500),
-          border: Border.all(color: AppColors.appBackgroundColor),
-          color: AppColors.appBackgroundColor),
+          border: Border.all(color: AppColors.splashScreenBackColor),
+          color: AppColors.splashScreenBackColor),
     );
   }
 
@@ -39,6 +40,7 @@ class OtpController extends GetxController {
     String otp = otpTextController.value.text;
     if (mobileNumber == otp) {
       Utils.snackbar("success", "OTP is valid");
+      Utils.getNavigate(1, RoutesName.addressView);
     } else {
       Utils.snackbar("Error", "Please enter valid OTP");
     }

@@ -26,7 +26,7 @@ class MobileNumberField extends StatelessWidget {
         keyboardType: TextInputType.phone,
         cursorColor: AppColors.mobileSignInSubtitleTextColor,
         decoration: InputDecoration(
-          hintText: "Enter Mobile Number",
+          hintText: "entermobile".tr,
           hintStyle: TextStyle(color: AppColors.mobilenumberFieldTextColor),
           contentPadding: const EdgeInsets.only(left: 15),
           fillColor: AppColors.mobilenumberFieldColor,
@@ -41,7 +41,7 @@ class MobileNumberField extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(500),
-            borderSide: BorderSide(color: AppColors.appBackgroundColor),
+            borderSide: BorderSide(color: AppColors.splashScreenBackColor),
           ),
           errorStyle: const TextStyle(height: 0, fontSize: 0),
           errorBorder: OutlineInputBorder(

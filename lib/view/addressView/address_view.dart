@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:scrapsnap/res/appColors/app_colors.dart';
+import 'package:scrapsnap/utils/utils.dart';
 import 'package:scrapsnap/view_model/controller/addressViewController/address_view_contoller.dart';
+import 'package:scrapsnap/widgets/addressRadioButtons/address_radio_button.dart';
+import 'package:scrapsnap/widgets/addressTextFields/addres_pincode_text_field.dart';
+import 'package:scrapsnap/widgets/addressTextFields/address_area_text_filed.dart';
 import 'package:scrapsnap/widgets/addressTextFields/address_city_text_filed.dart';
 import 'package:scrapsnap/widgets/addressTextFields/address_state_text_field.dart';
+import 'package:scrapsnap/widgets/buttons/elevat_button_widget.dart';
+
+import '../../widgets/addressTextFields/address_landmark_text_field.dart';
+import '../../widgets/addressTextFields/address_text_field.dart';
 
 class AddressView extends StatefulWidget {
   const AddressView({super.key});
@@ -19,23 +26,35 @@ class _AddressViewState extends State<AddressView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
         centerTitle: true,
         title: Text("address".tr),
-        leading: IconButton(
-            onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_outlined)),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const AddressStateTextField(),
-            const AddressCityTextFiled(),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: addressViewController.submitSelection,
-              child: const Text("Submit"),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              const AddressStateTextField(),
+              const AddressCityTextFiled(),
+              const AddressAreaTextFiled(),
+              const AddressPincodeTextFiled(),
+              const AddressLandmarkTextField(),
+              const AddressTextField(),
+              const AddressRadioButton(),
+              const SizedBox(height: 20),
+              ElevatButtonWidget(
+                width: 333,
+                topMargin: 58,
+                text: "Submit",
+                onPressed: () {
+                  addressViewController.addressViewOnPressed();
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

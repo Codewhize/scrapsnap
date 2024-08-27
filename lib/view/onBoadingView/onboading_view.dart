@@ -7,7 +7,6 @@ import 'package:scrapsnap/view_model/controller/onboading_controller.dart';
 import 'package:scrapsnap/widgets/buttons/elevat_button_widget.dart';
 import 'package:scrapsnap/widgets/buttons/text_button_widget.dart';
 
-
 class OnBoadingView extends StatefulWidget {
   const OnBoadingView({super.key});
 
@@ -46,6 +45,7 @@ class _OnBoadingViewState extends State<OnBoadingView> {
     ];
 
     return Scaffold(
+      backgroundColor: AppColors.appBackColor,
       body: Stack(
         children: [
           Obx(

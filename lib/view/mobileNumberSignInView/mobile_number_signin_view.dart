@@ -25,6 +25,7 @@ class _MobileNumberSigninViewState extends State<MobileNumberSigninView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.appBackColor,
       body: SingleChildScrollView(
         child: Center(
           child: Column(

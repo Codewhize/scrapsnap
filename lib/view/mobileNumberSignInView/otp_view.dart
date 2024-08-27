@@ -25,6 +25,7 @@ class _OtpViewState extends State<OtpView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.appBackColor,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -90,7 +91,7 @@ class _OtpViewState extends State<OtpView> {
                 },
                 topMargin: 6,
                 width: 150,
-                color: AppColors.appBackgroundColor,
+                color: AppColors.splashScreenBackColor,
               ),
               Text.rich(
                 textAlign: TextAlign.center,
@@ -101,7 +102,7 @@ class _OtpViewState extends State<OtpView> {
                     TextSpan(
                       text: "enteragain".tr,
                       style: TextStyle(
-                          fontSize: 13, color: AppColors.appBackgroundColor),
+                          fontSize: 13, color: AppColors.splashScreenBackColor),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           Get.toNamed(RoutesName.mobileSignInView);
